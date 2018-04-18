@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h1 class="text-center">Do You Prefer Your Sandwiches Toasted?</h1>
+    </div>
+</div>
+<div class ="row" id="voting">
+    <div class="col-sm-12">
+        <form onSubmit="App.castVote(); return false;">
+            <div class="form-group">
+                <label for="candidatesSelect">Select Candidate</label>
+                <select class="form-control" id="candidatesSelect">
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Vote</button>
+            <a href="/account" class="btn btn-danger btn-block" role="button">Vote Later</a>
+            <hr/>
+        </form>
+    </div>
+</div>
+
+<div class="row" id="voted">
+    <div class="col-sm-12">
+            <form method="post">
+                <button type="submit"class="btn btn-danger btn-block">Thank you for voting</a>
+            </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <p id="accountAddress" class="text-center"></p>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Plugins -->
+<script src="../../static/Election/src/js/bootstrap.min.js"></script>
+<script src="../../static/Election/src/js/truffle-contract.js"></script>
+<script src="../../static/Election/src/js/app.js"></script>
+
+
+
+{% endblock %}

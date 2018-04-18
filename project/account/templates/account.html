@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-11"></div>
+    <div class="col-sm-1">
+        <a href="/logout" class="btn btn-danger button-logout" role="button">Logout</a>
+    </div>
+</div>
+
+
+<div class="row">
+    {% if current_user.is_authenticated %}
+    <div class="col-sm-12">
+            <h1 class="well text-center"> {{current_user.userdeets.first}} {{current_user.userdeets.last}} </h1>
+    </div>
+</div>
+
+<div class="well">
+    <div class="row">
+        <div class="col-sm-6">
+            <p>City: {{current_user.userdeets.city}}</p>
+        </div>
+        <div class="col-sm-6">
+            <p>Age: {{current_user.userdeets.age}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <p>Email Address: {{current_user.email}}</p>
+        </div>
+        <div class="col-sm-6">
+            {% if current_user.userdeets.voted == 0 %}
+            <p>Voted: No </p>
+            {% elif current_user.userdeets.voted == 1  %}
+            <p>Voted: Yes </p>
+            {% endif %}
+        </div>
+    </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            {% if current_user.userdeets.voted == 0 %}
+            <a href="/vote" class="btn btn-primary btn-lg btn-block" role="button">Vote</a>
+            {% elif current_user.userdeets.voted == 1  %}
+            <a href="/#" class="btn btn-primary btn-lg disabled btn-block" role="button" aria-disabled="true">Vote</a>
+            {% endif %}
+        </div>
+        {% endif %}
+        <div class="col-sm-6">
+            {% if current_user.userdeets.voted == 0 %}
+            <a href="#" class="btn btn-primary btn-lg disabled btn-block" role="button" aria-disabled="true">Results</a>
+            {% elif current_user.userdeets.voted == 1  %}
+            <a href="/results" class="btn btn-primary btn-lg btn-block" role="button">Results</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
