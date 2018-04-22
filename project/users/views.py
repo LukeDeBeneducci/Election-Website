@@ -9,6 +9,8 @@ from project.models import User, bcrypt, Details
 users_blueprint = Blueprint('users', __name__, template_folder='templates')
 
 ## ROUTES ##
+db.create_all()
+db.session.commit()
 
 # Home Page: contains the user loging form, compares entered details to the database.
 # Correct login will redirect to account page.
